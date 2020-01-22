@@ -23,8 +23,8 @@ export default function Search(props) {
         })
         .then((response) => response.json())
         .then((data) => {
-            //send response data to the parent
-            props.handleResponse(data.results[0].hits)           
+            //send response data to the parent. if input field is empty, send null
+            searchInput.length > 0 ? props.handleResponse(data.results[0].hits) : props.handleResponse(null)
         })
         .catch((error) => {
             console.error('Error:', error);
