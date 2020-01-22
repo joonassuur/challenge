@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function Results(props) {
 
+    const regex = /http/gi;
 
     return(
         <div>
@@ -13,7 +14,11 @@ export default function Results(props) {
                             <div key={e.objectID}>
                                 {e.name}
                             </div>
-                            <img src={e.image} alt={e.description} key={i}/>
+                            <img src={
+                                //replace the original http protocol with https
+                                e.image.replace(regex, "https")
+                            }
+                            alt={e.description} key={i}/>
                         </div>
                     )
                 })
